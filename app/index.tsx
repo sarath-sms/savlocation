@@ -345,16 +345,24 @@ export default function ContactSaver() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>📇 Contact Saver</Text>
+        <Text style={styles.headerTitle}>𞄹 SavLocation</Text>
         <Text style={styles.headerSubtitle}>
-          {contacts.length} contact{contacts.length !== 1 ? 's' : ''} saved
+          {!!contacts.length && `Total Locations: ${contacts.length}`}
         </Text>
       </View>
 
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.actionBar}>
-        <TouchableOpacity onPress={handleImportCSV} style={[styles.actionButton, { backgroundColor: '#4CAF50' }]}>
+      <View style={styles.actionBar}>
+        <TouchableOpacity onPress={handleImportCSV} style={[styles.actionButton, { backgroundColor: '#8ab5f9' }]}>
           <Text style={[styles.actionButtonText, { color: '#fff' }]}>📤 Import CSV</Text>
-        </TouchableOpacity>
+          </TouchableOpacity>
+  
+          <TouchableOpacity
+            onPress={handleShareWhatsApp}
+            disabled={contacts.length === 0}
+            style={[styles.actionButton, { backgroundColor: contacts.length === 0 ? '#666' : '#25D366' }]}
+          >
+            <Text style={[styles.actionButtonText, { color: '#fff' }]}>💬 Share All</Text>
+          </TouchableOpacity>
 
         <TouchableOpacity
           onPress={handleDownloadCSV}
@@ -363,15 +371,7 @@ export default function ContactSaver() {
         >
           <Text style={styles.actionButtonText}>📥 Export CSV</Text>
         </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={handleShareWhatsApp}
-          disabled={contacts.length === 0}
-          style={[styles.actionButton, { backgroundColor: contacts.length === 0 ? '#666' : '#25D366' }]}
-        >
-          <Text style={[styles.actionButtonText, { color: '#fff' }]}>💬 Share All</Text>
-        </TouchableOpacity>
-      </ScrollView>
+      </View>
 
       <ScrollView style={styles.listContainer}>
         {contacts.length === 0 ? (
@@ -548,7 +548,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#26355D' },
   header: {
     backgroundColor: '#FFEB3B',
-    paddingTop: 50,
+    paddingTop: 20,
     paddingBottom: 20,
     paddingHorizontal: 20,
     ...Platform.select({
@@ -561,7 +561,7 @@ const styles = StyleSheet.create({
   actionBar: { 
     flexDirection: 'row', 
     paddingHorizontal: 15,
-    paddingVertical: 12
+    paddingVertical: 12,
   },
   actionButton: {
     paddingVertical: 10,

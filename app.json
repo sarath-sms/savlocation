@@ -29,7 +29,8 @@
         "ACCESS_FINE_LOCATION"
       ],
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.sarathsward.contactApp"
     },
     "web": {
       "output": "static",
