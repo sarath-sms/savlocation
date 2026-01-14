@@ -548,7 +548,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#26355D' },
   header: {
     backgroundColor: '#FFEB3B',
-    paddingTop: 20,
+    paddingTop: 35,
     paddingBottom: 20,
     paddingHorizontal: 20,
     ...Platform.select({
